@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, SecretStr, field_validator, Field
+from pydantic import BaseModel, EmailStr, field_validator, Field
 import re
 
 
@@ -18,17 +18,17 @@ class UserIn(UserBase):
 
         Parameters:
             email (EmailStr): The user's email address (inherited from UserBase).
-            password (SecretStr): The user's password.
+            password (str): The user's password.
     """
-    password: SecretStr = Field(..., max_length=32, examples=["Userexamplepassword123"])
+    password: str = Field(..., max_length=32, examples=["Userexamplepassword123"])
 
     @field_validator("password")
-    def password_validator(cls, value: SecretStr) -> SecretStr | ValueError:
+    def password_validator(cls, value: str) -> str | ValueError:
         """
         Validate the password format.
 
             Parameters:
-                value (SecretStr): The password to validate.
+                value (str): The password to validate.
 
             Raises:
                 ValueError: If the password does not meet the specified requirements:
@@ -38,11 +38,11 @@ class UserIn(UserBase):
                     - One number
 
             Returns:
-                value (SecretStr): The validated password.
+                value (str): The validated password.
         """
         PASSWORD_REGEX = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#?$%^&*]{8,}$"
 
-        if not re.match(PASSWORD_REGEX, value.get_secret_value()):
+        if not re.match(PASSWORD_REGEX, value):
             raise ValueError(
                 "The password must consist of at least eight characters, "
                 "one uppercase letter, one lowercase letter and one number"
@@ -67,6 +67,8 @@ class UserInDB(UserBase):
 
         Parameters:
             email (EmailStr): The user's email address (inherited from UserBase).
-            hashed_password (SecretStr): Hashed user password.
+            id (int): The user's unique identifier.
+            hashed_password (str): Hashed user password.
     """
-    hashed_password: SecretStr = Field(..., examples=["Userexamplehashedpassword123"])
+    id: int = Field(..., examples=[1])
+    hashed_password: str = Field(..., examples=["Userexamplehashedpassword123"])

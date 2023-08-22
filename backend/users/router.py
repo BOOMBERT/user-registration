@@ -62,4 +62,4 @@ async def create_user(user: UserIn, db: Session = Depends(get_db)):
     if db_user:
         raise EmailAlreadyRegistered()
 
-    return services.create_user(db=db, user=user)
+    return services.create_user(db, user)
