@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
 from backend.users.router import router as users_router
-from backend.authentication.router import router as auth_router
 from backend.database.configuration import Base, engine
 from backend.config import API_ENDPOINT
 
@@ -18,4 +17,3 @@ app = FastAPI(
 )
 
 app.include_router(users_router, prefix=API_ENDPOINT)
-app.include_router(auth_router, prefix=API_ENDPOINT)

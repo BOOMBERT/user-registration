@@ -3,7 +3,7 @@ from pydantic import EmailStr
 
 from .. import models
 from .schemas import UserIn, UserInDB, UserOut
-from ..utils.password_hashing import get_password_hash
+from ..utils.security import get_password_hash
 
 
 def get_user_by_email(db: Session, email: EmailStr) -> UserInDB | None:
@@ -18,6 +18,19 @@ def get_user_by_email(db: Session, email: EmailStr) -> UserInDB | None:
             UserInDB | None: The retrieved user if found, otherwise None.
         """
     return db.query(models.User).filter(models.User.email == email).first()
+
+def get_user_by_id(db: Session, user_id: int) -> UserInDB | None:
+    """
+    Retrieve a user by their identifier.
+
+    Parameters:
+        db (Session): The database session.
+        user_id (int): The identifier of the user to retrieve.
+
+    Returns:
+        UserInDB | None: The retrieved user if found, otherwise None.
+    """
+    return db.query(models.User).filter(models.User.id == user_id).first()
 
 def create_user(db: Session, user: UserIn) -> UserOut:
     """

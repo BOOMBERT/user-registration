@@ -6,7 +6,7 @@ from jose import jwt
 from os import getenv
 
 from ..users.services import get_user_by_email
-from .. utils.password_hashing import verify_password
+from .. utils.security import verify_password
 
 
 def authenticate_user(db: Session, email: str, password: str) -> bool | UserInDB:
@@ -21,7 +21,7 @@ def authenticate_user(db: Session, email: str, password: str) -> bool | UserInDB
         Returns:
             bool | UserInDB:
                 - Returns False if authentication fails.
-                - Returns a UserInDB instance if authentication succeeds.
+                - Returns a user's information from database if authentication succeeds.
     """
     user = get_user_by_email(db, email)
     if not user:
@@ -39,7 +39,7 @@ def create_access_token(data: Dict, expires_delta: timedelta) -> str:
             expires_delta (timedelta): A time duration indicating the validity period of the access token.
 
         Returns:
-            str: The generated access token.
+            str: The created access token.
     """
     to_encode = data.copy()
     expires = datetime.utcnow() + expires_delta

@@ -57,8 +57,9 @@ class UserOut(UserBase):
 
         Parameters:
             email (EmailStr): The user's email address (inherited from UserBase).
+            id (int): The user's unique identifier.
     """
-    pass
+    id: int = Field(..., examples=[1])
 
 
 class UserInDB(UserBase):
