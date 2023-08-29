@@ -36,8 +36,8 @@ function validatePassword(password) {
     if (password.length < 8) {
         return "Password should contain at least 8 characters";
     }
-    if (password.length > 32) {
-        return "Password cannot exceed 32 characters";
+    if (password.length > 256) {
+        return "Password cannot exceed 256 characters";
     }
     if (!password.match(/[a-z]/)) {
         return "Password must include at least 1 lowercase character";
