@@ -10,7 +10,10 @@ class EmailAlreadyRegistered(HTTPException):
             DETAIL (str): The detailed error message indicating that the email is already registered.
     """
     STATUS_CODE = status.HTTP_409_CONFLICT
-    DETAIL = "Email address is already registered"
+    DETAIL = {
+        "loc": ["body", "email"],
+        "msg": "Email address is already registered"
+    }
 
     def __init__(self):
         """

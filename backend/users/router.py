@@ -26,11 +26,12 @@ router = APIRouter(
     <h1>Creates a new user with the provided information:</h1>
     
     email: User's unregistered email address.
-    password: User's password that must meet the following criteria:
+    password: User's password, which must include at least:
         - eight characters,
-        - one uppercase letter,
-        - one lowercase letter,
-        - one number
+        - one uppercase character,
+        - one lowercase character,
+        - one digit
+        Also the password can't include more than 256 characters.
     """,
     response_model=UserOut,
     responses={

@@ -20,7 +20,7 @@ class UserIn(UserBase):
             email (EmailStr): The user's email address (inherited from UserBase).
             password (str): The user's password.
     """
-    password: str = Field(..., max_length=32, examples=["Userexamplepassword123"])
+    password: str = Field(..., min_length=8, max_length=256, examples=["Userexamplepassword123"])
 
     @field_validator("password")
     def password_validator(cls, value: str) -> str | ValueError:
@@ -32,20 +32,18 @@ class UserIn(UserBase):
 
             Raises:
                 ValueError: If the password does not meet the specified requirements:
-                    - At least eight characters
-                    - One uppercase letter
-                    - One lowercase letter
-                    - One number
+                    - One uppercase character
+                    - One lowercase character
+                    - One digit
 
             Returns:
                 value (str): The validated password.
         """
-        PASSWORD_REGEX = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#?$%^&*]{8,}$"
+        PASSWORD_REGEX = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$"
 
         if not re.match(PASSWORD_REGEX, value):
             raise ValueError(
-                "The password must consist of at least eight characters, "
-                "one uppercase letter, one lowercase letter and one number"
+                "The password must include at least 1 lowercase character, 1 uppercase character and 1 digit"
             )
 
         return value
