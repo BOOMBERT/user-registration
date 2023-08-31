@@ -11,7 +11,7 @@ class IncorrectEmailOrPassword(HTTPException):
             HEADERS (Dict[str, str]): The headers to be included in the response when this exception is raised.
     """
     STATUS_CODE = status.HTTP_401_UNAUTHORIZED
-    DETAIL = "Email address or password is incorrect"
+    DETAIL = {"msg": "Email address or password is incorrect"}
     HEADERS = {"WWW-Authenticate": "Bearer"}
 
     def __init__(self):
@@ -31,7 +31,7 @@ class InvalidCredentials(HTTPException):
             HEADERS (Dict[str, str]): The headers to be included in the response when this exception is raised.
     """
     STATUS_CODE = status.HTTP_401_UNAUTHORIZED
-    DETAIL = "Could not validate credentials"
+    DETAIL = {"msg": "Could not validate credentials"}
     HEADERS = {"WWW-Authenticate": "Bearer"}
 
     def __init__(self):
