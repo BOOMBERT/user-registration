@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../src/styles/form-styles.css"/>
     <script type="module" src="../src/hooks/config.js" defer></script>
     <script type="module" src="../src/hooks/registerHook.js" defer></script>
+    <script type="module" src="../src/hooks/loginHook.js" defer></script>
     <script src="../src/utils/passwordVisibility.js" defer></script>
 </head>
 <body>
@@ -16,12 +17,12 @@
 
             <h2>Register</h2>
             <label for="register-email">Email address</label>
-            <input type="text" id="register-email" class="input-email" placeholder="Type your email address" maxlength="320">
+            <input type="text" id="register-email" class="input-email" placeholder="Type your email address" maxlength="320" autocomplete="on">
             <label for="register-email" id="register-email-label" class="input-error"></label>
                 
             <div class="password-container">
                 <label for="register-password">Password</label>
-                <input type="password" id="register-password" class="input-password" placeholder="Type your password" maxlength="256">
+                <input type="password" id="register-password" class="input-password" placeholder="Type your password" maxlength="256" autocomplete="off">
                 
                 <input type="checkbox" id="register-password-checkbox" onclick="passwordVisibilityToggle('register-password')">
                 <label for="register-password" id="register-password-label" class="input-error"></label>
@@ -34,17 +35,17 @@
 
             <h2>Login</h2>
             <label for="login-email">Email address</label>
-            <input type="text" id="login-email" class="input-email" placeholder="Type your email address" maxlength="320">
+            <input type="text" id="login-email" class="input-email" placeholder="Type your email address" maxlength="320" autocomplete="on">
                 
             <div class="password-container">
                 <label for="login-password">Password</label>
-                <input type="password" id="login-password" class="input-password" placeholder="Type your password" maxlength="256">
+                <input type="password" id="login-password" class="input-password" placeholder="Type your password" maxlength="256" autocomplete="off">
                 
                 <input type="checkbox" id="login-password-checkbox" onclick="passwordVisibilityToggle('login-password')">
-                <label for="login-password-checkbox" id="login-password-label" class="input-error"></label>
             </div>
-            
+
             <button type="submit" id="login-submit-button">Login</button>
+            <label for="login-submit-button" id="login-email-password-label" class="input-error"></label>
         </form>    
     </div>
 

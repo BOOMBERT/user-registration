@@ -30,7 +30,8 @@ async function registerRequest(email, password) {
                 "Content-Type": "application/json"
             }
         })
-        return registerResponseValidation(registerResponse);
+        registerResponseValidation(registerResponse);
+        return registerResponse;
 
     } catch(error) {
         alert("Server error");
