@@ -7,7 +7,6 @@ const requestUrl = `${baseUrl}/users/login`;
 const submitLoginButton = document.getElementById("login-submit-button");
 
 submitLoginButton.addEventListener("click", (event) => {
-    console.log("a");
     event.preventDefault();
 
     const email = document.getElementById("login-email").value;
