@@ -7,6 +7,7 @@ const requestUrl = `${baseUrl}/users/login`;
 const submitLoginButton = document.getElementById("login-submit-button");
 
 submitLoginButton.addEventListener("click", (event) => {
+    console.log("a");
     event.preventDefault();
 
     const email = document.getElementById("login-email").value;
@@ -33,12 +34,12 @@ async function loginRequest(email, password) {
             const accessToken = await responseData.access_token;
             
             document.cookie = `accessToken=${accessToken}; path=/;`;
-            window.location.href = "/frontend/public/sites/me.html";
+            window.location.href = "/users/me";
         }
         return loginResponse;
 
     } catch(error) {
-        alert("Server error");
         console.error(`Internal Server Error, ${error}`);
+        alert("Server error");
     }
 }

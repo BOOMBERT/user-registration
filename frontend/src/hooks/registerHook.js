@@ -34,7 +34,7 @@ async function registerRequest(email, password) {
         return registerResponse;
 
     } catch(error) {
-        alert("Server error");
         console.error(`Internal Server Error, ${error}`);
+        alert("Server error");
     }
 }
