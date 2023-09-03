@@ -1,5 +1,5 @@
-const registerEmailLabel = document.getElementById('register-email-label');
-const registerPasswordLabel = document.getElementById('register-password-label');
+const registerEmailLabel = document.getElementById('register-email-error-label');
+const registerPasswordLabel = document.getElementById('register-password-error-label');
 
 const invalidEmailMessage = "Invalid email address";
 
@@ -26,12 +26,13 @@ export function registerParametersValidation(email, password) {
     return isValid;
 }
 
-const loginEmailPasswordLabel = document.getElementById('login-email-password-label');
+const loginEmailPasswordLabel = document.getElementById('login-email-password-error');
 const invalidEmailOrPasswordMessage = "Email address or password is incorrect"
 
 export function loginParametersValidation(email, password) {
     if (!validateEmail(email) || validatePassword(password) !== true) {
         loginEmailPasswordLabel.textContent = invalidEmailOrPasswordMessage;
+        console.error(invalidEmailOrPasswordMessage);
         return false;
     } else {
         loginEmailPasswordLabel.textContent = "";

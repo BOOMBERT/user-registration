@@ -13,38 +13,42 @@
 
     <div id="forms-container">
         <form id="register-form">
-
-            <h2>Register</h2>
-            <label for="register-email">Email address</label>
-            <input type="text" id="register-email" class="input-email" placeholder="Type your email address" maxlength="320" autocomplete="on">
-            <label for="register-email" id="register-email-label" class="input-error"></label>
-                
-            <div class="password-container">
-                <label for="register-password">Password</label>
-                <input type="password" id="register-password" class="input-password" placeholder="Type your password" maxlength="256" autocomplete="off">
-                
-                <input type="checkbox" id="register-password-checkbox" onclick="passwordVisibilityToggle('register-password')">
-                <label for="register-password" id="register-password-label" class="input-error"></label>
+            <h2 class="form-title">Register</h2>
+            
+            <div class="email-container">
+                <label for="register-email" class="input-label">Email address:</label>
+                <input type="text" id="register-email" class="form-input" placeholder="Type your email address" maxlength="320" autocomplete="on">
             </div>
+            <label for="register-email" id="register-email-error-label" class="input-error"></label>
 
-            <button type="submit" id="register-submit-button">Register</button>
+            <div class="password-container">
+                <label for="register-password" class="input-label">Password:</label>
+                <input type="password" id="register-password" class="form-input" placeholder="Type your password" maxlength="256" autocomplete="off">   
+                <input type="checkbox" id="register-password-checkbox" class="checkbox-password" onclick="passwordVisibilityToggle('register-password')">
+            </div>
+            <label for="register-password" id="register-password-error-label" class="input-error"></label>
+            
+            <button type="submit" id="register-submit-button" class="form-submit-button">Register</button>
         </form>
     
         <form id="login-form">
+            <h2 class="form-title">Login</h2>
 
-            <h2>Login</h2>
-            <label for="login-email">Email address</label>
-            <input type="text" id="login-email" class="input-email" placeholder="Type your email address" maxlength="320" autocomplete="on">
-                
+            <div class="email-container">
+                <label for="login-email" class="input-label">Email address:</label>
+                <input type="text" id="login-email" class="form-input" placeholder="Type your email address" maxlength="320" autocomplete="on"> 
+            </div>
+            <label for="" class="input-error"></label>
+
             <div class="password-container">
-                <label for="login-password">Password</label>
-                <input type="password" id="login-password" class="input-password" placeholder="Type your password" maxlength="256" autocomplete="off">
-                
-                <input type="checkbox" id="login-password-checkbox" onclick="passwordVisibilityToggle('login-password')">
+                <label for="login-password" class="input-label">Password:</label>
+                <input type="password" id="login-password" class="form-input" placeholder="Type your password" maxlength="256" autocomplete="off">
+                <input type="checkbox" id="login-password-checkbox" class="checkbox-password" onclick="passwordVisibilityToggle('login-password')">
             </div>
 
-            <button type="submit" id="login-submit-button">Login</button>
-            <label for="login-submit-button" id="login-email-password-label" class="input-error"></label>
+            <p id="login-email-password-error" class="input-error"></p>
+            <button type="submit" id="login-submit-button" class="form-submit-button">Login</button>
+            
         </form>    
     </div>
 

@@ -1,8 +1,8 @@
 import { clearFormInputData } from "../utils/clearForms.js";
 
 
-const registerEmailLabel = document.getElementById('register-email-label');
-const registerPasswordLabel = document.getElementById('register-password-label');
+const registerEmailErrorLabel = document.getElementById('register-email-error-label');
+const registerPasswordErrorLabel = document.getElementById('register-password-error-label');
 
 const registerEmailInput = document.getElementById('register-email');
 const registerPasswordInput = document.getElementById('register-password');
@@ -19,9 +19,9 @@ export async function registerResponseValidation(registerResponse) {
         const responseDataLocation = await responseData.detail.loc[1];
 
         if (responseDataLocation === "email") {
-            registerEmailLabel.textContent = responseDataMessage;
+            registerEmailErrorLabel.textContent = responseDataMessage;
         } else if (responseDataLocation === "password") {
-            registerPasswordLabel = responseDataMessage;
+            registerPasswordErrorLabel = responseDataMessage;
         }
         console.error(responseDataMessage);
     }
@@ -29,7 +29,7 @@ export async function registerResponseValidation(registerResponse) {
     return registerResponse;
 }
 
-const loginEmailPasswordLabel = document.getElementById('login-email-password-label');
+const loginEmailPasswordError = document.getElementById('login-email-password-error');
 
 const loginEmailInput = document.getElementById('login-email');
 const loginPasswordInput = document.getElementById('login-password');
@@ -45,7 +45,7 @@ export async function loginResponseValidation(loginResponse) {
         const responseData = await loginResponse.json();
         const responseDataMessage = await responseData.detail.msg;
 
-        loginEmailPasswordLabel.textContent = responseDataMessage;
+        loginEmailPasswordError.textContent = responseDataMessage;
         
         console.error(responseDataMessage);
         return false;
