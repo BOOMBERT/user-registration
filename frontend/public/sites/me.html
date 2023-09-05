@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Me</title>
+    <link rel="stylesheet" href="../../src/styles/me-styles.css">
     <script type="module" src="../../src/hooks/meHook.js" defer></script>
     <script type="module" src="../../src/utils/logout.js" defer></script>
 </head>
 <body>
-    <h1>Welcome</h1>
+    <div id="container">
 
-    <p>Your data:</p>
-    <p>Id: <span id="user-id">null</span></p>
-    <p>Email address: <span id="user-email">null</span></p>
+        <h1 id="me-title">Welcome</h1>
 
-    <button type="submit" id="logout-button">Logout</button>
+        <div class="main-content">
+            <h5 class="title-of-data">Your data:</h5>
+            <p class="me-data"><i>Id: </i><span id="user-id">null</span></p>
+            <p class="me-data"><i>Email address: </i><span id="user-email">null</span></p>
+
+            <button type="submit" id="logout-button" class="submit-button">Logout</button>
+        </div>
+    </div>
+
 </body>
 </html>

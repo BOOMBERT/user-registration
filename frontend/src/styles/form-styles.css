@@ -1,4 +1,10 @@
 @import url("main-styles.css");
+@import url("buttons.css");
+
+.form-title,
+.input-label {
+    color: var(--secondary)
+}
 
 #forms-container {
     display: flex;
@@ -9,8 +15,8 @@
 
 #register-form,
 #login-form {
-    border: white solid 1px;
-    background-color: white;
+    border: var(--secondary) solid 2px;
+    background-color: var(--primary);
     width: 45%;
     border-radius: 25px;
     display: flex;
@@ -21,10 +27,16 @@
 }
 
 .input-error {
-    color: red;
+    color: var(--error);
     display: block;
     font-size: 13px;
     min-height: 35px;
+    cursor: text;
+}
+
+.submit-button {
+    margin-top: 10%;
+    margin-bottom: 5%; 
 }
 
 .checkbox-password {
@@ -33,6 +45,7 @@
     width: 15px;
     height: 38px;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .input-label {
@@ -57,19 +70,6 @@
     margin-bottom: 10%;
 }
 
-.form-submit-button{
-    margin-top: 10%;
-    margin-bottom: 5%;   
-    width: 125px;
-    padding: 8px 20px;
-    border-radius: 25px;
-}
-
-.form-submit-button,
-.checkbox-password {
-    cursor: pointer;
-}
-
 @media only screen and (max-width: 800px) {
     #forms-container {
         display: block;
@@ -90,7 +90,7 @@
 }
 
 @media only screen and (max-width: 450px) {
-    .form-submit-button {
+    .submit-button {
         width: 100px;
         padding: 6px 15px;
         border-width: 1px;
@@ -122,7 +122,7 @@
 }
 
 @media only screen and (max-height: 670px) {
-    .form-submit-button {
+    .submit-button {
         margin-top: 0;
     }
 

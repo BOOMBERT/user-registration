@@ -6,23 +6,46 @@
     box-sizing: border-box;
 }
 
+:root {
+    --text: #e4e7ec;
+    --background: #0d0f12;
+    --primary: #d3ccc0;
+    --secondary: #282a1e;
+    --error: #d31d1d;
+}
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: var(--background);
 }
 
+h1 {
+    font-size: 100px;
+}
 
-h2 {
+h3 {
     font-size: 50px;
 }
 
-h2,
+h5 {
+    font-size: 20px;
+}
+
+
+h1,
+h3,
+h5,
 label,
 p,
 button,
 input {
+    color: var(--text);
     font-family: 'JetBrains Mono', monospace;
+}
+
+input {
+    color: var(--secondary);
 }
