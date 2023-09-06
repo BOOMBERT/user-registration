@@ -1,9 +1,9 @@
-import { baseUrl } from "./config.js";
+import { baseApiUrl } from "./config.js";
 import { getCookie, removeCookie } from "../utils/cookies.js";
 import { checkAccessToken } from "../utils/authorizationCheck.js";
 
 
-const requestUrl = `${baseUrl}/users/me`;
+const requestUrl = `${baseApiUrl}/users/me`;
 
 async function meRequest() {
     try {

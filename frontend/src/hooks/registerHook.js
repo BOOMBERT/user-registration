@@ -1,9 +1,9 @@
-import { baseUrl } from "./config.js";
+import { baseApiUrl } from "./config.js";
 import { registerParametersValidation } from "../validations/dataValidation.js";
 import { registerResponseValidation } from "../validations/responseValidation.js";
 
 
-const registerRequestUrl = `${baseUrl}/users/register`;
+const registerRequestUrl = `${baseApiUrl}/users/register`;
 const submitRegisterButton = document.getElementById("register-submit-button");
 
 submitRegisterButton.addEventListener("click", (event) => {

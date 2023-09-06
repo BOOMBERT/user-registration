@@ -3,6 +3,11 @@
 
 #me-title {
     margin-bottom: 30%;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+#me-title:hover {
+    transform: scale(1.02);
 }
 
 .submit-button {

@@ -1,41 +1,40 @@
-const registerEmailLabel = document.getElementById('register-email-error-label');
-const registerPasswordLabel = document.getElementById('register-password-error-label');
-
+const registerEmailErrorLabel = document.getElementById('register-email-error-label');
+const registerPasswordErrorLabel = document.getElementById('register-password-error-label');
 const invalidEmailMessage = "Invalid email address";
 
 export function registerParametersValidation(email, password) {
     let isValid = true;
 
     if (!validateEmail(email)) {
-        registerEmailLabel.textContent = invalidEmailMessage;
+        registerEmailErrorLabel.textContent = invalidEmailMessage;
         console.error(invalidEmailMessage);
         isValid = false;
     } else {
-        registerEmailLabel.textContent = "";
+        registerEmailErrorLabel.textContent = "";
     }
 
     const validPassword = validatePassword(password);
     if (validPassword !== true) {
-        registerPasswordLabel.textContent = validPassword;
+        registerPasswordErrorLabel.textContent = validPassword;
         console.error(validPassword);
         isValid = false;
     } else {
-        registerPasswordLabel.textContent = "";
+        registerPasswordErrorLabel.textContent = "";
     }
 
     return isValid;
 }
 
-const loginEmailPasswordLabel = document.getElementById('login-email-password-error');
+const loginEmailPasswordError = document.getElementById('login-email-password-error');
 const invalidEmailOrPasswordMessage = "Email address or password is incorrect"
 
 export function loginParametersValidation(email, password) {
     if (!validateEmail(email) || validatePassword(password) !== true) {
-        loginEmailPasswordLabel.textContent = invalidEmailOrPasswordMessage;
+        loginEmailPasswordError.textContent = invalidEmailOrPasswordMessage;
         console.error(invalidEmailOrPasswordMessage);
         return false;
     } else {
-        loginEmailPasswordLabel.textContent = "";
+        loginEmailPasswordError.textContent = "";
         return true;
     }
 }

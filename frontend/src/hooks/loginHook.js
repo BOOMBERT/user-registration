@@ -1,9 +1,9 @@
-import { baseUrl } from "./config.js";
+import { baseApiUrl } from "./config.js";
 import { loginParametersValidation } from "../validations/dataValidation.js";
 import { loginResponseValidation } from "../validations/responseValidation.js";
 
 
-const requestUrl = `${baseUrl}/users/login`;
+const requestUrl = `${baseApiUrl}/users/login`;
 const submitLoginButton = document.getElementById("login-submit-button");
 
 submitLoginButton.addEventListener("click", (event) => {
