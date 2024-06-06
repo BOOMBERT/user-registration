@@ -3,27 +3,27 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def verify_password(plain_password: str, hashed_password: str) -> bool:
+def verify_hashed_string(plain_string: str, hashed_string: str) -> bool:
     """
-    Verify a plain password against a hashed password.
+    Verifies a plain string against a string hashed by a cryptographic context.
 
         Parameters:
-            plain_password (str): The plain password to be verified.
-            hashed_password (str): The hashed password to compare against.
+            plain_string (str): A plain string to be verified.
+            hashed_string (str): A hashed string to compare against.
 
         Returns:
-            bool: True if the passwords match, False otherwise.
+            bool: True if the string match, False otherwise.
     """
-    return pwd_context.verify(plain_password, hashed_password)
+    return pwd_context.verify(plain_string, hashed_string)
 
-def get_password_hash(password: str) -> str:
+def get_hashed_string(string: str) -> str:
     """
-   Hash a password using the configured cryptographic context.
+   Hashes a string using the configured cryptographic context.
 
        Parameters:
-           password (str): The password to be hashed.
+           string (str): The string to be hashed.
 
        Returns:
-           str: The hashed password.
+           str: The hashed string.
     """
-    return pwd_context.hash(password)
+    return pwd_context.hash(string)

@@ -1,12 +1,12 @@
 from typing import Dict
 
 
-def build_example_response(detail: str, headers: Dict = None) -> Dict:
+def build_example_response(detail: Dict, headers: Dict = None) -> Dict:
     """
-    Build an example response for API documentation.
+    Builds an example response for API documentation.
 
         Parameters:
-            detail (str): The detail message to be included in the example response.
+            detail (str): A detail message to be included in the example response.
             headers (Dict, optional): A dictionary of custom headers to be included in the example response.
 
         Returns:

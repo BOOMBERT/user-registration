@@ -14,7 +14,7 @@ class IncorrectEmailOrPassword(HTTPException):
     DETAIL = {"msg": "Email address or password is incorrect"}
     HEADERS = {"WWW-Authenticate": "Bearer"}
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize the IncorrectEmailOrPassword exception.
         """
@@ -34,7 +34,7 @@ class InvalidCredentials(HTTPException):
     DETAIL = {"msg": "Could not validate credentials"}
     HEADERS = {"WWW-Authenticate": "Bearer"}
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize the InvalidCredentials exception.
         """

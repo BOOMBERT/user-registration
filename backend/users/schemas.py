@@ -25,7 +25,7 @@ class UserIn(UserBase):
     @field_validator("password")
     def password_validator(cls, value: str) -> str | ValueError:
         """
-        Validate the password format.
+        Validates the password format.
 
             Parameters:
                 value (str): The password to validate.
@@ -71,3 +71,4 @@ class UserInDB(UserBase):
     """
     id: int = Field(..., examples=[1])
     hashed_password: str = Field(..., examples=["Userexamplehashedpassword123"])
+    hashed_refresh_token: str = Field(..., examples=["Userexamplehashedrefreshtoken123"])
