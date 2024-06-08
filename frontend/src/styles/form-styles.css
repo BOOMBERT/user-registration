@@ -1,134 +1,99 @@
 @import url("main-styles.css");
 @import url("buttons.css");
 
-.form-title,
-.input-label {
-    color: var(--secondary)
-}
-
-#forms-container {
+.forms-container {
     display: flex;
-    justify-content: space-around;
-    width: 750px;
-    height: 50%;
-}
-
-#register-form,
-#login-form {
-    border: var(--secondary) solid 2px;
-    background-color: var(--primary);
-    width: 45%;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
     justify-content: center;
+    height: 100vh;
+    align-items: center;
 }
 
-.input-error {
-    color: var(--error);
-    display: block;
-    font-size: 13px;
-    min-height: 35px;
-    cursor: text;
+.form {
+    color: var(--secondary);
+    background-color: var(--primary);
+    text-align: center;
+    margin: 2rem 5vw;
+    width: 26rem;
+    border: 0.25rem solid var(--secondary);
+    border-radius: 25px;
 }
 
-.submit-button {
-    margin-top: 10%;
-    margin-bottom: 5%; 
+.form__email-container,
+.form__password-container {
+    margin: 2rem auto;
+    width: 65%;
 }
 
-.checkbox-password {
-    display: inline;
-    position: absolute;
-    width: 15px;
-    height: 38px;
-    margin-left: 5px;
+.form__button,
+.form__title {
+    margin: 2rem 0;
+}
+
+.form__checkbox {
     cursor: pointer;
 }
 
-.input-label {
-    display: flex;
-    font-size: 13px;
-    margin-bottom: 1px;
+.form__checkbox--password {
+    display: inline;
+    position: absolute;
+    width: 1rem;
+    margin-left: 0.35rem;
 }
 
-.email-container,
-.password-container {
-    width: 80%;
+.form__input,
+.form__checkbox--password {
+    height: 2.25rem;
 }
 
-.form-input {
-    margin-bottom: 5px;
+.form__input {
+    font-size: 1rem;
     width: 100%;
-    padding: 8px 20px;
-    border-radius: 6px;
+    border-radius: 11px;
+    padding: 0 0.75rem;
 }
 
-.form-title {
-    margin-bottom: 10%;
+.form__label {
+    float: left;
+    margin-bottom: 0.25rem;
+    font-size: 1.15rem;
 }
+
+.form__error {
+    font-style: italic;
+    font-size: 0.9rem;
+    height: 0.9rem;
+    color: var(--error);
+    display: block;
+}
+
 
 @media only screen and (max-width: 800px) {
-    #forms-container {
-        display: block;
-        width: 80%;
-        max-width: 500px;
+    html {
+        font-size: 14px;
+    }
+
+    .forms-container {
+        flex-direction: column;
         height: auto;
     }
 
-    #register-form,
-    #login-form {
-        width: 100%;
-        margin: 5% 0;
-    }
-
-    .form-title {
-        margin-top: 1%;
+    .form {
+        margin: 1.3rem auto;
     }
 }
 
-@media only screen and (max-width: 450px) {
-    .submit-button {
-        width: 100px;
-        padding: 6px 15px;
-        border-width: 1px;
-        font-size: 11px;
-    }
-
-    .form-input {
-        padding: 5px 20px;
-        font-size: 11px;
-        border-width: 1px;
-    }
-
-    .checkbox-password {
-        width: 15px;
-        height: 28px;
-    }
-
-    .input-error {
-        font-size: 10px;
-    }
-
-    .form-title {
-        font-size: 40px;
-    }
-
-    .input-label {
+@media only screen and (max-width: 400px) {
+    html {
         font-size: 12px;
     }
+
+    .form {
+        width: 25rem;
+    }
 }
 
-@media only screen and (max-height: 670px) {
-    .submit-button {
-        margin-top: 0;
-    }
-
-    .form-title {
-        font-size: 30px;
-        margin-bottom: 10px;
-        margin-top: 0;
+@media only screen and (max-height: 548px) {
+    .forms-container {
+        height: auto;
     }
 }

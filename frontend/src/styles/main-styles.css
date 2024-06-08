@@ -14,38 +14,20 @@
     --error: #d31d1d;
 }
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+html {
     background-color: var(--background);
-}
-
-h1 {
-    font-size: 100px;
-}
-
-h3 {
-    font-size: 50px;
-}
-
-h5 {
-    font-size: 20px;
-}
-
-
-h1,
-h3,
-h5,
-label,
-p,
-button,
-input {
     color: var(--text);
     font-family: 'JetBrains Mono', monospace;
 }
 
-input {
-    color: var(--secondary);
+h1 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 4rem;
+}
+
+h5 {
+    font-size: 3rem;
 }
