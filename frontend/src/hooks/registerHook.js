@@ -1,24 +1,22 @@
 import { baseApiUrl } from "./config.js";
-import { registerParametersValidation } from "../validations/dataValidation.js";
+import { registerArgumentsValidation } from "../validations/dataValidation.js";
 import { registerResponseValidation } from "../validations/responseValidation.js";
 
 
 const registerRequestUrl = `${baseApiUrl}/users/register`;
-const submitRegisterButton = document.getElementById("register-submit-button");
+const RegisterButton = document.getElementById('register-button');
 
-submitRegisterButton.addEventListener("click", (event) => {
+RegisterButton.addEventListener("click", (event) => {
     event.preventDefault();
+    const email = document.getElementById('register-email-input').value;
+    const password = document.getElementById('register-password-input').value;
 
-    const email = document.getElementById("register-email").value;
-    const password = document.getElementById("register-password").value;
-
-    if (registerParametersValidation(email, password)) {
-        registerRequest(email, password);
+    if (registerArgumentsValidation(email, password)) {
+        registerSendRequest(email, password);
     }
 });
 
-async function registerRequest(email, password) {
-
+async function registerSendRequest(email, password) {
     try {
         const registerResponse = await fetch(registerRequestUrl, {
             method: "POST",

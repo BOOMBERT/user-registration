@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users login and registration</title>
     <link rel="stylesheet" type="text/css" href="src/styles/form-styles.css">
-    <!-- <script type="module" src="src/hooks/registerHook.js" defer></script>
-    <script type="module" src="src/hooks/loginHook.js" defer></script> -->
+    <script type="module" src="src/hooks/registerHook.js" defer></script>
+    <!-- <script type="module" src="src/hooks/loginHook.js" defer></script> -->
     <script src="src/utils/passwordVisibility.js" defer></script>
 </head>
 <body>
@@ -18,17 +18,17 @@
             <div class="form__email-container">
                 <label for="register-email-input" class="form__label">Email address:</label>
                 <input type="text" id="register-email-input" class="form__input" placeholder="Type your email address" maxlength="320">
-                <span id="register-email-error" class="form__error">test</span>
+                <span id="register-email-error" class="form__error"></span>
             </div>
 
             <div class="form__password-container">
                 <label for="register-password-input" class="form__label">Password:</label>
                 <input type="password" id="register-password-input" class="form__input" placeholder="Type your password" maxlength="256" autocomplete="on">   
-                <input type="checkbox" class="form__checkbox form__checkbox--password" onclick="passwordVisibilityToggle('register-password-input')">
-                <span id="register-password-error" class="form__error">test</span>
+                <input type="checkbox" id="register-password-checkbox" class="form__checkbox form__checkbox--password" onclick="passwordVisibilityToggle('register-password-input')">
+                <span id="register-password-error" class="form__error"></span>
             </div>
             
-            <button type="button" class="button button--primary form__button">Register</button>
+            <button type="button" id="register-button" class="button button--primary form__button">Register</button>
         </form>
     
         <form class="form">

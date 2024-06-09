@@ -1,4 +1,4 @@
-export function clearFormInputData(inputEmail, inputPassword, checkbox) {
+export function clearFormData(inputEmail, inputPassword, checkbox) {
     inputEmail.value = "";
     inputPassword.value = "";
 

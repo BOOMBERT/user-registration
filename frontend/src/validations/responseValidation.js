@@ -1,53 +1,52 @@
-import { clearFormInputData } from "../utils/clearForms.js";
+import { clearFormData } from "../utils/clearForms.js";
 
 
-const registerEmailErrorLabel = document.getElementById('register-email-error-label');
-const registerPasswordErrorLabel = document.getElementById('register-password-error-label');
-
-const registerEmailInput = document.getElementById('register-email');
-const registerPasswordInput = document.getElementById('register-password');
+const registerEmailInput = document.getElementById('register-email-input');
+const registerPasswordInput = document.getElementById('register-password-input');
 const registerPasswordCheckbox = document.getElementById('register-password-checkbox');
+const registerEmailError = document.getElementById('register-email-error');
+const registerPasswordError = document.getElementById('register-password-error');
 
 export async function registerResponseValidation(registerResponse) {
     if (registerResponse.status === 201) {
         alert("Successfully registered");
         console.log("Successfully registered");
-        clearFormInputData(registerEmailInput, registerPasswordInput, registerPasswordCheckbox);
-    } else {
-        const responseData = await registerResponse.json();
-        const responseDataMessage = await responseData.detail.msg;
-        const responseDataLocation = await responseData.detail.loc[1];
-
-        if (responseDataLocation === "email") {
-            registerEmailErrorLabel.textContent = responseDataMessage;
-        } else if (responseDataLocation === "password") {
-            registerPasswordErrorLabel = responseDataMessage;
-        }
-        console.error(responseDataMessage);
-    }
-
-    return registerResponse;
-}
-
-const loginEmailPasswordError = document.getElementById('login-email-password-error');
-
-const loginEmailInput = document.getElementById('login-email');
-const loginPasswordInput = document.getElementById('login-password');
-const loginPasswordCheckbox = document.getElementById('login-password-checkbox');
-
-export async function loginResponseValidation(loginResponse) {
-    if (loginResponse.status === 200) {
-        console.log("Successfully logged in");
-        clearFormInputData(loginEmailInput, loginPasswordInput, loginPasswordCheckbox);
-        
+        clearFormData(registerEmailInput, registerPasswordInput, registerPasswordCheckbox);
         return true;
     } else {
-        const responseData = await loginResponse.json();
-        const responseDataMessage = await responseData.detail.msg;
+        const responseErrorData = await registerResponse.json();
+        const responseErrorMessage = await responseErrorData.detail.msg;
+        const responseErrorLocation = await responseErrorData.detail.loc[1];
+        console.error(responseErrorMessage);
 
-        loginEmailPasswordError.textContent = responseDataMessage;
-        
-        console.error(responseDataMessage);
+        if (responseErrorLocation === "email") {
+            registerEmailError.textContent = responseErrorMessage;
+        } else if (responseErrorLocation === "password") {
+            registerPasswordError.textContent = responseErrorMessage;
+        }
         return false;
     }
 }
+
+// const loginEmailPasswordError = document.getElementById('login-email-password-error');
+
+// const loginEmailInput = document.getElementById('login-email');
+// const loginPasswordInput = document.getElementById('login-password');
+// const loginPasswordCheckbox = document.getElementById('login-password-checkbox');
+
+// export async function loginResponseValidation(loginResponse) {
+//     if (loginResponse.status === 200) {
+//         console.log("Successfully logged in");
+//         clearFormInputData(loginEmailInput, loginPasswordInput, loginPasswordCheckbox);
+        
+//         return true;
+//     } else {
+//         const responseData = await loginResponse.json();
+//         const responseDataMessage = await responseData.detail.msg;
+
+//         loginEmailPasswordError.textContent = responseDataMessage;
+        
+//         console.error(responseDataMessage);
+//         return false;
+//     }
+// }

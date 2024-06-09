@@ -1,51 +1,51 @@
-const registerEmailErrorLabel = document.getElementById('register-email-error-label');
-const registerPasswordErrorLabel = document.getElementById('register-password-error-label');
+const registerEmailError = document.getElementById('register-email-error');
+const registerPasswordError = document.getElementById('register-password-error');
 const invalidEmailMessage = "Invalid email address";
 
-export function registerParametersValidation(email, password) {
+export function registerArgumentsValidation(email, password) {
     let isValid = true;
 
-    if (!validateEmail(email)) {
-        registerEmailErrorLabel.textContent = invalidEmailMessage;
+    if (!emailValidation(email)) {
+        registerEmailError.textContent = invalidEmailMessage;
         console.error(invalidEmailMessage);
         isValid = false;
     } else {
-        registerEmailErrorLabel.textContent = "";
+        registerEmailError.textContent = "";
     }
 
-    const validPassword = validatePassword(password);
-    if (validPassword !== true) {
-        registerPasswordErrorLabel.textContent = validPassword;
-        console.error(validPassword);
+    const passwordCheck = passwordValidation(password);
+    if (passwordCheck !== true) {
+        registerPasswordError.textContent = passwordCheck;
+        console.error(passwordCheck);
         isValid = false;
     } else {
-        registerPasswordErrorLabel.textContent = "";
+        registerPasswordError.textContent = "";
     }
 
     return isValid;
 }
 
-const loginEmailPasswordError = document.getElementById('login-email-password-error');
-const invalidEmailOrPasswordMessage = "Email address or password is incorrect"
+// const loginEmailPasswordError = document.getElementById('login-email-password-error');
+// const invalidEmailOrPasswordMessage = "Email address or password is incorrect"
 
-export function loginParametersValidation(email, password) {
-    if (!validateEmail(email) || validatePassword(password) !== true) {
-        loginEmailPasswordError.textContent = invalidEmailOrPasswordMessage;
-        console.error(invalidEmailOrPasswordMessage);
-        return false;
-    } else {
-        loginEmailPasswordError.textContent = "";
-        return true;
-    }
-}
+// export function loginParametersValidation(email, password) {
+//     if (!emailValidation(email) || passwordValidation(password) !== true) {
+//         loginEmailPasswordError.textContent = invalidEmailOrPasswordMessage;
+//         console.error(invalidEmailOrPasswordMessage);
+//         return false;
+//     } else {
+//         loginEmailPasswordError.textContent = "";
+//         return true;
+//     }
+// }
 
-function validateEmail(email) {
+function emailValidation(email) {
     return email.match(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 }
 
-function validatePassword(password) {
+function passwordValidation(password) {
     if (password.length < 8) {
         return "Password should contain at least 8 characters";
     }
