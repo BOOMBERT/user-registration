@@ -1,29 +1,28 @@
 import { baseApiUrl } from "./config.js";
-import { loginParametersValidation } from "../validations/dataValidation.js";
+import { loginArgumentsValidation } from "../validations/dataValidation.js";
 import { loginResponseValidation } from "../validations/responseValidation.js";
 
 
 const requestUrl = `${baseApiUrl}/users/login`;
-const submitLoginButton = document.getElementById("login-submit-button");
+const loginButton = document.getElementById('login-button');
 
-submitLoginButton.addEventListener("click", (event) => {
+loginButton.addEventListener("click", (event) => {
     event.preventDefault();
 
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
-
-    if (loginParametersValidation(email, password)) {
-        loginRequest(email, password);
+    const email = document.getElementById('login-email-input').value;
+    const password = document.getElementById('login-password-input').value;
+    if (loginArgumentsValidation(email, password)) {
+        loginSendRequest(email, password);
     }
 })
 
-async function loginRequest(email, password) {
+async function loginSendRequest(email, password) {
     try {
-        const loginData = `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`;
-    
+        const loginBodyData = `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`;
+        
         const loginResponse = await fetch(requestUrl, {
             method: "POST",
-            body: loginData,
+            body: loginBodyData,
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             }

@@ -25,19 +25,19 @@ export function registerArgumentsValidation(email, password) {
     return isValid;
 }
 
-// const loginEmailPasswordError = document.getElementById('login-email-password-error');
-// const invalidEmailOrPasswordMessage = "Email address or password is incorrect"
+const loginError = document.getElementById('login-error');
+const invalidEmailOrPasswordMessage = "Email address or password is incorrect"
 
-// export function loginParametersValidation(email, password) {
-//     if (!emailValidation(email) || passwordValidation(password) !== true) {
-//         loginEmailPasswordError.textContent = invalidEmailOrPasswordMessage;
-//         console.error(invalidEmailOrPasswordMessage);
-//         return false;
-//     } else {
-//         loginEmailPasswordError.textContent = "";
-//         return true;
-//     }
-// }
+export function loginArgumentsValidation(email, password) {
+    if (!emailValidation(email) || passwordValidation(password) !== true) {
+        loginError.textContent = invalidEmailOrPasswordMessage;
+        console.error(invalidEmailOrPasswordMessage);
+        return false;
+    } else {
+        loginError.textContent = "";
+        return true;
+    }
+}
 
 function emailValidation(email) {
     return email.match(

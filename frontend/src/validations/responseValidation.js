@@ -28,25 +28,22 @@ export async function registerResponseValidation(registerResponse) {
     }
 }
 
-// const loginEmailPasswordError = document.getElementById('login-email-password-error');
+const loginError = document.getElementById('login-error');
+const loginEmailInput = document.getElementById('login-email-input');
+const loginPasswordInput = document.getElementById('login-password-input');
+const loginPasswordCheckbox = document.getElementById('login-password-checkbox');
 
-// const loginEmailInput = document.getElementById('login-email');
-// const loginPasswordInput = document.getElementById('login-password');
-// const loginPasswordCheckbox = document.getElementById('login-password-checkbox');
+export async function loginResponseValidation(loginResponse) {
+    if (loginResponse.status === 200) {
+        console.log("Successfully logged in");
+        clearFormData(loginEmailInput, loginPasswordInput, loginPasswordCheckbox);
+        return true;
+    } else {
+        const responseErrorData = await loginResponse.json();
+        const responseErrorMessage = await responseErrorData.detail.msg;
 
-// export async function loginResponseValidation(loginResponse) {
-//     if (loginResponse.status === 200) {
-//         console.log("Successfully logged in");
-//         clearFormInputData(loginEmailInput, loginPasswordInput, loginPasswordCheckbox);
-        
-//         return true;
-//     } else {
-//         const responseData = await loginResponse.json();
-//         const responseDataMessage = await responseData.detail.msg;
-
-//         loginEmailPasswordError.textContent = responseDataMessage;
-        
-//         console.error(responseDataMessage);
-//         return false;
-//     }
-// }
+        loginError.textContent = responseErrorMessage;
+        console.error(responseErrorMessage);
+        return false;
+    }
+}

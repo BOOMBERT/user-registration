@@ -6,10 +6,15 @@
     <title>Users login and registration</title>
     <link rel="stylesheet" type="text/css" href="src/styles/form-styles.css">
     <script type="module" src="src/hooks/registerHook.js" defer></script>
-    <!-- <script type="module" src="src/hooks/loginHook.js" defer></script> -->
+    <script type="module" src="src/hooks/loginHook.js" defer></script>
     <script src="src/utils/passwordVisibility.js" defer></script>
 </head>
 <body>
+    
+    <script type="module">
+        import { correctUrl } from "../src/utils/authorizationCheck.js"
+        correctUrl();
+    </script>
 
     <div class="forms-container">
         <form class="form">
@@ -43,11 +48,11 @@
             <div class="form__password-container">
                 <label for="login-password-input" class="form__label">Password:</label>
                 <input type="password" id="login-password-input" class="form__input" placeholder="Type your password" maxlength="256" autocomplete="on">
-                <input type="checkbox" class="form__checkbox form__checkbox--password" onclick="passwordVisibilityToggle('login-password-input')">
+                <input type="checkbox" id="login-password-checkbox" class="form__checkbox form__checkbox--password" onclick="passwordVisibilityToggle('login-password-input')">
             </div>
             
-            <span id="login-error" class="form__error">test</span>      
-            <button type="button" class="button button--primary form__button">Login</button>
+            <span id="login-error" class="form__error"></span>      
+            <button type="button" id="login-button" class="button button--primary form__button">Login</button>
         </form>    
     </div>
 
