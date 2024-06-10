@@ -13,7 +13,7 @@
     
     <script type="module">
         import { correctUrl } from "../src/utils/authorizationCheck.js"
-        correctUrl();
+        window.addEventListener('pageshow', correctUrl);
     </script>
 
     <div class="forms-container">

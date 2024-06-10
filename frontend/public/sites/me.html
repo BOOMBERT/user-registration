@@ -11,8 +11,8 @@
 <body>
 
     <script type="module">
-        import { correctUrl } from "../../src/utils/authorizationCheck.js"
-        correctUrl();
+        import { correctUrl } from "../../src/utils/authorizationCheck.js";
+        window.addEventListener('pageshow', correctUrl);
     </script>
 
     <div class="container">

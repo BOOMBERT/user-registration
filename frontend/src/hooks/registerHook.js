@@ -4,9 +4,9 @@ import { registerResponseValidation } from "../validations/responseValidation.js
 
 
 const registerRequestUrl = `${baseApiUrl}/users/register`;
-const RegisterButton = document.getElementById('register-button');
+const registerButton = document.getElementById('register-button');
 
-RegisterButton.addEventListener("click", (event) => {
+registerButton.addEventListener("click", (event) => {
     event.preventDefault();
     const email = document.getElementById('register-email-input').value;
     const password = document.getElementById('register-password-input').value;

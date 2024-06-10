@@ -2,6 +2,7 @@
 @import url("buttons.css");
 
 .container {
+    display: grid;
     text-align: center;
     height: 100vh;
     align-content: center;

@@ -14,7 +14,7 @@ loginButton.addEventListener("click", (event) => {
     if (loginArgumentsValidation(email, password)) {
         loginSendRequest(email, password);
     }
-})
+});
 
 async function loginSendRequest(email, password) {
     try {

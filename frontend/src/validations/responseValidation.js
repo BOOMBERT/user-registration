@@ -1,4 +1,4 @@
-import { clearFormData } from "../utils/clearForms.js";
+import { clearFormData } from "../utils/clearData.js";
 
 
 const registerEmailInput = document.getElementById('register-email-input');

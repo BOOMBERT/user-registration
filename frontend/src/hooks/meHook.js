@@ -41,4 +41,6 @@ function displayUserData(userData) {
     userEmail.textContent = userData.email;
 }
 
-meRequest();
+if (getCookie("accessToken")) {
+    meRequest();
+}
