@@ -14,5 +14,9 @@ export function correctUrl() {
 
     if (authToken && window.location.pathname === "/") {
         window.location.href = "/users/me";
+        console.log('a');
+    } else if (authToken === undefined && window.location.pathname === "/users/me/") {
+        window.location.href = "/"
+        console.log('b');
     }
 }
