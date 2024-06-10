@@ -1,51 +1,46 @@
 @import url("main-styles.css");
 @import url("buttons.css");
 
-#me-title {
-    margin-bottom: 30%;
-    transition: all 0.2s ease-in-out 0s;
-}
-
-#me-title:hover {
-    transform: scale(1.02);
-}
-
-.submit-button {
-    margin-top: 10%; 
-}
-
-.main-content {
+.container {
     text-align: center;
+    height: 100vh;
+    align-content: center;
 }
 
-.title-of-data {
-    margin-bottom: 2%;
+.main-title {
+    font-size: clamp(60px, 15vw, 150px);
+    transition: all 0.25s ease-in-out 0s;
+    cursor: default;
+    width: fit-content;
+    margin-bottom: 0.5em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main-title:hover {
     color: var(--primary);
+    text-shadow: 0px 0px 0.5em var(--secondary);
+    transform: scale(1.025);
 }
 
-@media only screen and (max-width: 465px) {
-    #me-title {
-        font-size: 80px;
-    }
+.user-data__title {
+    color: var(--primary);
+    font-size: clamp(24px, 5vw, 42px);
 }
 
-@media only screen and (max-width: 350px) {
-    #me-title {
-        font-size: 50px;
-    }
+.user-data__button {
+    margin-top: 1.75em;
+    margin-bottom: 5rem;
+}
 
-    .title-of-data {
+@media only screen and (max-width: 700px) {
+    html {
         font-size: 14px;
     }
+}
 
-    .me-data {
-        font-size: 12px;
-    }
-
-    .submit-button {
-        width: 100px;
-        padding: 6px 15px;
-        border-width: 1px;
+@media only screen and (max-width: 550px) {
+    html {
         font-size: 12px;
     }
 }

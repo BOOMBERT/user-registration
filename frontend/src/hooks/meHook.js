@@ -34,8 +34,8 @@ async function meRequest() {
 }
 
 function displayUserData(userData) {
-    const userId = document.getElementById('user-id');
-    const userEmail = document.getElementById('user-email');
+    const userId = document.getElementById('user-id-space');
+    const userEmail = document.getElementById('user-email-space');
   
     userId.textContent = userData.id;
     userEmail.textContent = userData.email;

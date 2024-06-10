@@ -9,16 +9,16 @@
     <script type="module" src="../../src/utils/logout.js" defer></script>
 </head>
 <body>
-    <div id="container">
 
-        <h1 id="me-title">Welcome</h1>
+    <div class="container">
+        <h1 class="main-title">Welcome</h1>
 
-        <div class="main-content">
-            <h5 class="title-of-data">Your data:</h5>
-            <p class="me-data"><i>Id: </i><span id="user-id">null</span></p>
-            <p class="me-data"><i>Email address: </i><span id="user-email">null</span></p>
+        <div class="user-data">
+            <h5 class="user-data__title">Your data:</h5>
+            <p class="user-data__element"><i>Id: </i><span id="user-id-space">null</span></p>
+            <p class="user-data__element"><i>Email address: </i><span id="user-email-space">null</span></p>
 
-            <button type="submit" id="logout-button" class="submit-button">Logout</button>
+            <button type="button" id="logout-button" class="button button--primary user-data__button">Logout</button>
         </div>
     </div>
 
