@@ -3,7 +3,7 @@ import { loginArgumentsValidation } from "../validations/dataValidation.js";
 import { loginResponseValidation } from "../validations/responseValidation.js";
 
 
-const requestUrl = `${baseApiUrl}/users/login`;
+const loginRequestUrl = `${baseApiUrl}/users/login`;
 const loginButton = document.getElementById('login-button');
 
 loginButton.addEventListener("click", (event) => {
@@ -20,7 +20,7 @@ async function loginSendRequest(email, password) {
     try {
         const loginBodyData = `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`;
         
-        const loginResponse = await fetch(requestUrl, {
+        const loginResponse = await fetch(loginRequestUrl, {
             method: "POST",
             body: loginBodyData,
             headers: {
@@ -30,8 +30,10 @@ async function loginSendRequest(email, password) {
         if (await loginResponseValidation(loginResponse)) {
             const responseData = await loginResponse.json();
             const accessToken = await responseData.access_token;
-            
-            document.cookie = `accessToken=${accessToken}; path=/;`;
+            const refreshToken = await responseData.refresh_token;
+
+            document.cookie = `accessToken=${accessToken}; path=/; SameSite=Strict;`;
+            document.cookie = `refreshToken=${refreshToken}; path=/; SameSite=Strict;`;
             window.location.href = "/users/me";
         }
         return loginResponse;

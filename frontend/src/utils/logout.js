@@ -1,4 +1,4 @@
-import { removeCookie } from "./cookies.js";
+import { removeCookies } from "./cookies.js";
 import { checkAccessToken } from "./authorizationCheck.js";
 
 const userId = document.getElementById('user-id-space');
@@ -8,7 +8,7 @@ const logoutButton = document.getElementById('logout-button');
 logoutButton.addEventListener("click", () => {
     userId.textContent = "null";
     userEmail.textContent = "null";
-    removeCookie();
+    removeCookies();
     checkAccessToken();
 });
 

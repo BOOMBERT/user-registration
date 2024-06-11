@@ -1,46 +1,58 @@
 import { baseApiUrl } from "./config.js";
-import { getCookie, removeCookie } from "../utils/cookies.js";
+import { getCookie, removeCookies } from "../utils/cookies.js";
 import { checkAccessToken } from "../utils/authorizationCheck.js";
+import { meResponseValidation, refreshAccessTokenResponseValidation } from "../validations/responseValidation.js";
+import { isTokenExpired } from "../utils/authorizationCheck.js"
 
 
-const requestUrl = `${baseApiUrl}/users/me`;
+const meRequestUrl = `${baseApiUrl}/users/me`;
 
-async function meRequest() {
+async function meSendRequest() {
     try {
-        const meResponse = await fetch(requestUrl, {
+        const meResponse = await fetch(meRequestUrl, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
                 "Authorization": `Bearer ${getCookie("accessToken")}`
             }
         })
-        if (meResponse.status === 200) {
-            const meResponseData = await meResponse.json();
-            displayUserData(meResponseData);
-        } else {
-            removeCookie();
-            console.error("Unauthorized");
-            alert("Unauthorized");
-            checkAccessToken();
-        }
+        meResponseValidation(meResponse);
         return meResponse;
 
     } catch (error) {
-        removeCookie();
+        removeCookies();
         console.error(`Internal Server Error, ${error}`);
         alert("Server error");
         checkAccessToken();
     }
 }
 
-function displayUserData(userData) {
-    const userId = document.getElementById('user-id-space');
-    const userEmail = document.getElementById('user-email-space');
-  
-    userId.textContent = userData.id;
-    userEmail.textContent = userData.email;
+let refreshAccessTokenRequestUrl = `${baseApiUrl}/users/refresh` 
+
+async function refreshAccessTokenSendRequest() {
+    try {
+        refreshAccessTokenRequestUrl += `?refresh_token=${getCookie("refreshToken")}`;
+        
+        const refreshAccessTokenResponse = await fetch(refreshAccessTokenRequestUrl, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json"
+            }
+        })
+        return refreshAccessTokenResponseValidation(refreshAccessTokenResponse);
+
+    } catch (error) {
+        removeCookies();
+        console.error(`Internal Server Error, ${error}`);
+        alert("Server error");
+        checkAccessToken();
+    }
 }
 
-if (getCookie("accessToken")) {
-    meRequest();
+if (isTokenExpired(getCookie("accessToken"))) {
+    if (await refreshAccessTokenSendRequest()) {
+        meSendRequest();
+    }
+} else {
+    meSendRequest();
 }

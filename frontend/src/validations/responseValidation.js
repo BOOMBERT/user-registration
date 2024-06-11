@@ -1,4 +1,6 @@
 import { clearFormData } from "../utils/clearData.js";
+import { removeCookies } from "../utils/cookies.js";
+import { checkAccessToken } from "../utils/authorizationCheck.js";
 
 
 const registerEmailInput = document.getElementById('register-email-input');
@@ -44,6 +46,38 @@ export async function loginResponseValidation(loginResponse) {
 
         loginError.textContent = responseErrorMessage;
         console.error(responseErrorMessage);
+        return false;
+    }
+}
+
+const userId = document.getElementById('user-id-space');
+const userEmail = document.getElementById('user-email-space');
+
+export async function meResponseValidation(meResponse) {
+    if (meResponse.status === 200) {
+        const meResponseData = await meResponse.json();
+        userId.textContent = meResponseData.id;
+        userEmail.textContent = meResponseData.email;
+        return true;
+    } else {
+        removeCookies();
+        console.error("Unauthorized");
+        alert("Unauthorized");
+        checkAccessToken();
+        return false;
+    }
+}
+
+export async function refreshAccessTokenResponseValidation(refreshAccessTokenResponse) {
+    if (refreshAccessTokenResponse.status === 200) {
+        const responseData = await refreshAccessTokenResponse.json();
+        document.cookie = `accessToken=${responseData.access_token}; path=/; SameSite=Strict;`;
+        return true;
+    } else {
+        removeCookies();
+        console.error("Unauthorized");
+        alert("Unauthorized");
+        checkAccessToken();
         return false;
     }
 }
