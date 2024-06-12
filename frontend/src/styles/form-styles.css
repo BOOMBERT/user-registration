@@ -1,0 +1,99 @@
+@import url("main-styles.css");
+@import url("buttons.css");
+
+.forms-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.form {
+    color: var(--secondary);
+    background-color: var(--primary);
+    text-align: center;
+    margin: 2rem 5vw;
+    width: 26rem;
+    border: 0.25rem solid var(--secondary);
+    border-radius: 25px;
+}
+
+.form__email-container,
+.form__password-container {
+    margin: 2rem auto;
+    width: 65%;
+}
+
+.form__button,
+.form__title {
+    margin: 2rem 0;
+}
+
+.form__checkbox {
+    cursor: pointer;
+}
+
+.form__checkbox--password {
+    display: inline;
+    position: absolute;
+    width: 1rem;
+    margin-left: 0.35rem;
+}
+
+.form__input,
+.form__checkbox--password {
+    height: 2.25rem;
+}
+
+.form__input {
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 11px;
+    padding: 0 0.75rem;
+}
+
+.form__label {
+    float: left;
+    margin-bottom: 0.25rem;
+    font-size: 1.15rem;
+}
+
+.form__error {
+    font-style: italic;
+    font-size: 0.9rem;
+    height: 0.9rem;
+    color: var(--error);
+    display: block;
+}
+
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 14px;
+    }
+
+    .forms-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .form {
+        margin: 1.3rem auto;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    html {
+        font-size: 12px;
+    }
+
+    .form {
+        width: 25rem;
+    }
+}
+
+@media only screen and (max-height: 548px) {
+    .forms-container {
+        height: auto;
+    }
+}

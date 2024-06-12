@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me</title>
+    <link rel="stylesheet" href="../../src/styles/me-styles.css">
+    <script type="module" src="../../src/hooks/meHook.js" defer></script>
+    <script type="module" src="../../src/utils/logout.js" defer></script>
+</head>
+<body>
+
+    <script type="module">
+        import { correctUrl } from "../../src/utils/authorizationCheck.js";
+        window.addEventListener('pageshow', correctUrl);
+    </script>
+
+    <div class="container">
+        <h1 class="main-title">Welcome</h1>
+
+        <div class="user-data">
+            <h5 class="user-data__title">Your data:</h5>
+            <p class="user-data__element"><i>Id: </i><span id="user-id-space">null</span></p>
+            <p class="user-data__element"><i>Email address: </i><span id="user-email-space">null</span></p>
+
+            <button type="button" id="logout-button" class="button button--primary user-data__button">Logout</button>
+        </div>
+    </div>
+
+</body>
+</html>
