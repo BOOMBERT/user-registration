@@ -132,7 +132,7 @@ async def login_for_tokens(form_data: OAuth2PasswordRequestForm = Depends(), db:
     }
 
 
-@router.post(
+@router.get(
     "/refresh",
     summary="Refresh the access token",
     description="""

@@ -34,7 +34,7 @@ async function refreshAccessTokenSendRequest() {
         refreshAccessTokenRequestUrl += `?refresh_token=${getCookie("refreshToken")}`;
         
         const refreshAccessTokenResponse = await fetch(refreshAccessTokenRequestUrl, {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Accept": "application/json"
             }
